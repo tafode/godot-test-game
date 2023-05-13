@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpj8dyp73rf5b"]
+
+[ext_resource type="Texture2D" uid="uid://dlhv7ckw8p7r1" path="res://icon.svg" id="1_cb8ir"]
+[ext_resource type="Script" path="res://Menu.gd" id="1_x7r3v"]
+[ext_resource type="AudioStream" uid="uid://f6ipwpcpeid3" path="res://Music/futuristic-beat-146661.mp3" id="2_6tn2u"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x7r3v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_cb8ir")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6tn2u")
+autoplay = true
+
+[node name="QuitGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 478.0
+offset_right = 805.0
+offset_bottom = 574.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "Quit Game"
+
+[node name="NewGame" type="Button" parent="."]
+offset_left = 463.0
+offset_top = 322.0
+offset_right = 803.0
+offset_bottom = 418.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "New Game"
+
+[connection signal="pressed" from="QuitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
